@@ -21,8 +21,7 @@ if __name__ == "__main__":
     session = Session()
 
     states = session.query(
-            State).where(State.name.like(sys.argv[4]))
-    order_by(State.id).all()
+            State).where(State.name.like(sys.argv[4])).order_by(State.id).all()
 
     if not states:
         print("Not found")
