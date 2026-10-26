@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Prints state object with name."""
+
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -20,8 +21,8 @@ if __name__ == "__main__":
     session = Session()
 
     state = session.quey(State).filter(
-        State.name == sys.argv[4]
-    ).first()
+            State.name == sys.argv[4]
+        ).first()
 
     if state is None:
         print("Not found")
