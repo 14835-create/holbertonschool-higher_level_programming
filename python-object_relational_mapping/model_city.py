@@ -1,16 +1,18 @@
 #!/usr/bin/python3
 """Defines the city."""
 
-from sqlalchemy import Column, Interger, String, ForeignKey
+from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import declarative_base
 from model_state import Base
 
 
-class city(Base):
-    """Represents a city linked state."""
+class City(Base):
+    """
+    Represents a city in the database.
+    """
 
-    __tablename__ = "cities"
+    tablename = "cities"
 
-    id = Column(Interger, primary_key=True, nullable=False)
-    name = Column(string(128), nullable=False)
-    state_id = Column(Interger, ForeignKey("states.id"), nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False)
+    name = Column(String(128), nullable=False)
+    state_id = Column(Integer, ForeignKey("states.id"), nullable=False)
