@@ -20,7 +20,7 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    state = session.query(
+    states = session.query(
             State).where(State.name.like(sys.argv[4]))
     order_by(State.id).all()
 
