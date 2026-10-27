@@ -11,7 +11,7 @@ def fetch_and_print_posts():
             "https://jsonplaceholder.typicode.com/posts"
         )
 
-    print("Status code:", resp.status_code)
+    print("Status Code:", resp.status_code)
 
     if resp.status_code == 200:
         posts = resp.json()
