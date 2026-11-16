@@ -12,11 +12,12 @@ def items():
         with open('items.json', 'r') as f:
             data = json.load(f)
             items_list = data.get('items', [])
-        except Exception as e:
-            print(f"Error reading JSON file: {e}")
-            items_list = []
+        
+    except Exception as e:
+        print(f"Error reading JSON file: {e}")
+        items_list = []
 
-        return render_template('items.html', items=items_list)
+    return render_template('items.html', items=items_list)
 
 
 @app.route('/')
