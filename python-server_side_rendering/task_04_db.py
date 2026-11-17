@@ -54,37 +54,46 @@ def read_sql_file():
 def products():
     source = request.args.get('source')
     product_id = request.args.get('id')
+    
+    try:
+        if source == 'json':
+            data = read_json_file()
+        elif source == 'csv':
+            data = read_csv_file()
+        elif source == 'sql':
+            data = read_sql_file()
+        else:
+            return render_template(
+                    'product_display.html',
+                    error='Wrong source'
+            )
 
-try:
-    if source == 'json':
-        data = read_json_file()
-    elif source == 'csv':
-        data = read_csv_file()
-    elif source == 'sql':
-        data = read_sql_file()
-    else:
-        return render_template('product_display.html', error='Wrong source')
-
-except sqlite3.Error:
-    return render_template(
-            'product_display.html',
-            error='Database error'
-    )
+    except sqlite3.Error:
+        return render_template(
+                'product_display.html',
+                error='Database error'
+        )
 
     if product_id:
         product_id = int(product_id)
 
         filtered = [
-                product for product in data
-                if product['id'] == product_id
+            product for product in data
+            if product['id'] == product_id
         ]
 
         if not filtered:
-            return render_template('product_display.html', error='Product not found')
+            return render_template(
+                    'product_display.html',
+                    error='Product not found'
+            )
         
         data = filtered
 
-    return render_template('product_display.html', products=data)
+    return render_template(
+            'product_display.html',
+            products=data
+    )
 
 @app.route('/')
 def home():
