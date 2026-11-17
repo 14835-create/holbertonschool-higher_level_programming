@@ -45,7 +45,7 @@ def products():
 
         filtered = [
                 product for product in data
-                if profuct['id'] == product_id
+                if product['id'] == product_id
         ]
 
         if not filtered:
