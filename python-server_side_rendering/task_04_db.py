@@ -55,6 +55,7 @@ def products():
     source = request.args.get('source')
     product_id = request.args.get('id')
 
+try:
     if source == 'json':
         data = read_json_file()
     elif source == 'csv':
