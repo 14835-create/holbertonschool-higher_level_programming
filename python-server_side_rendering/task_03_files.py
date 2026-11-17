@@ -23,7 +23,7 @@ def read_csv_file():
                 'id': int(row['id']),
                 'name': row['name'],
                 'category': row['category'],
-                'price': floar(row['price'])
+                'price': float(row['price'])
             })
 
         return products
